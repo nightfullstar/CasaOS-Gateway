@@ -58,8 +58,10 @@ var allowTable = []rule{
 	{"PUT", "/v1/users/avatar", base},
 
 	// the apps, as the visibility lets the account see them (app management filters each answer)
-	{"GET", "/v2/app_management/web/appgrid", base},        // the dashboard's apps
-	{"GET", "/v2/app_management/compose", base},            // the apps of the app launching setting, secrets left out
+	{"GET", "/v2/app_management/web/appgrid", base},                           // the dashboard's apps
+	{"GET", "/v2/app_management/appstore/*/apps/*/icon", base},                // catalogue icon for <img> (token in the query)
+	{"GET", "/v2/app_management/appstore/*/apps/*/screenshot/*", base},        // catalogue screenshot for <img>
+	{"GET", "/v2/app_management/compose", base},                               // the apps of the app launching setting, secrets left out
 	{"GET", "/v2/app_management/container/*/detail", base}, // an app's details, environment values left out
 	{"GET", "/v2/app_management/stats", base},              // Statistics: the list
 	{"GET", "/v2/app_management/stats/*", base},            // Statistics: one series

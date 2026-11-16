@@ -213,6 +213,8 @@ GET /v2/app_management/apps/{id}/stable/{serviceName}
 GET /v2/app_management/appstore
 POST /v2/app_management/appstore
 DELETE /v2/app_management/appstore/{id}
+GET /v2/app_management/appstore/{id}/apps/{app}/icon
+GET /v2/app_management/appstore/{id}/apps/{app}/screenshot/{file}
 GET /v2/app_management/backup/destinations
 DELETE /v2/app_management/backup/destinations/{name}
 PUT /v2/app_management/backup/destinations/{name}

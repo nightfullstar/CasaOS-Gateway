@@ -172,7 +172,9 @@ var userTable = []struct {
 	{"HEAD", "/v2/app_management/web/appgrid", 200},
 	{"OPTIONS", "/v2/app_management/web/appgrid", 403},
 	{"GET", "/v2/app_management/logs/stream", 200}, // a websocket that only reads
-	{"GET", "/v2/app_management/apps", 403},        // the store: not on the table
+	{"GET", "/v2/app_management/appstore/0/apps/immich/icon", 200},
+	{"GET", "/v2/app_management/appstore/0/apps/immich/screenshot/screenshot-1.png", 200},
+	{"GET", "/v2/app_management/apps", 403}, // the store: not on the table
 	{"GET", "/v1/sys/utilization", 403},
 	{"GET", "/v1/file/ws", 403},
 	{"GET", "/v2/message_bus/socket.io/", 403},
@@ -274,6 +276,7 @@ func TestTokenInQueryStringIsJudgedLikeTheHeader(t *testing.T) {
 	assert.Equal(t, env.call(t, "POST", "/v2/app_management/compose?token="+token, nil), 403)
 	assert.Equal(t, env.call(t, "GET", "/v1/sys/wsssh?token="+token, nil), 403)
 	assert.Equal(t, env.call(t, "GET", "/v2/app_management/logs/stream?token="+token, nil), 200)
+	assert.Equal(t, env.call(t, "GET", "/v2/app_management/appstore/0/apps/immich/icon?token="+token, nil), 200)
 	assert.Equal(t, env.call(t, "GET", "/v1/users/avatar?token="+token, nil), 200)
 	assert.Equal(t, env.call(t, "GET", "/v2/message_bus/socket.io/?token="+token, nil), 403)
 	assert.Equal(t, env.call(t, "GET", "/v2/app_management/logs/stream/..%2F..%2F..%2Fv1%2Fsys%2Fwsssh?token="+token, nil), 403)

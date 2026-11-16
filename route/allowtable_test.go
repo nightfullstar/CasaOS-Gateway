@@ -121,3 +121,14 @@ func TestModuleRowsAreKnownReadsTheDashboardMakes(t *testing.T) {
 	}
 	assert.Assert(t, rows > 0)
 }
+
+// Catalogue icons and screenshots are dashboard <img> src: a user may GET them
+// (the JWT is in the query; AppManagement accepts that on these paths).
+func TestAUserMayReadStoreIcons(t *testing.T) {
+	assert.Assert(t, userMayCall("GET", "/v2/app_management/appstore/0/apps/immich/icon", nil))
+	assert.Assert(t, userMayCall("HEAD", "/v2/app_management/appstore/0/apps/immich/icon", nil))
+	assert.Assert(t, userMayCall("GET", "/v2/app_management/appstore/0/apps/immich/screenshot/screenshot-1.png", nil))
+	assert.Assert(t, !userMayCall("POST", "/v2/app_management/appstore/0/apps/immich/icon", nil))
+	assert.Assert(t, !userMayCall("GET", "/v2/app_management/appstore/0", nil))
+	assert.Assert(t, !userMayCall("GET", "/v2/app_management/apps", nil))
+}

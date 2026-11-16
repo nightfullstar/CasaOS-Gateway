@@ -48,6 +48,8 @@ POST /v1/users/current/custom/vm_order base
 
 # the apps (Apps/AppSection.vue, Apps/ContainerDetailPanel.vue, settings/AppLaunchModal.vue)
 GET /v2/app_management/web/appgrid base
+GET /v2/app_management/appstore/0/apps/immich/icon base
+GET /v2/app_management/appstore/0/apps/immich/screenshot/screenshot-1.png base
 GET /v2/app_management/compose base
 GET /v2/app_management/container/immich/detail base
 
